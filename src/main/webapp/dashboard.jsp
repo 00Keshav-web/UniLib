@@ -104,14 +104,17 @@
 
         <div class="dashboard-option">
             <a href="my-books" class="dashboard-option">
-                <h3>📖 My Borrowed Books</h3>
+                <h3> My Borrowed Books</h3>
                 <p>View books currently borrowed.</p>
             </a>
         </div>
 
         <div class="dashboard-option">
-            <h3>🔄 Borrowing History</h3>
-            <p>View your previous transactions.</p>
+            <a href="history" class="dashboard-option">
+                <h3> Borrowing History</h3>
+                <p>View your previous transactions.</p>
+            </a>
+            
         </div>
 
         <div class="dashboard-option">
