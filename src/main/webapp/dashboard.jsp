@@ -103,8 +103,10 @@
 </a>
 
         <div class="dashboard-option">
-            <h3>📖 My Borrowed Books</h3>
+            <a href="my-books" class="dashboard-option">
+                <h3>📖 My Borrowed Books</h3>
             <p>View books currently borrowed.</p>
+            </a>
         </div>
 
         <div class="dashboard-option">
