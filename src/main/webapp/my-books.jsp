@@ -175,10 +175,18 @@
                         </div>
 
 
-                        <button class="borrow-button"
-                                type="button">
-                            Return Book
-                        </button>
+                        <form action="return-book" method="post">
+
+                          <input type="hidden"
+                                 name="transactionId"
+                                 value="<%= book.getTransactionId() %>">
+                      
+                          <button class="borrow-button"
+                                  type="submit">
+                              Return Book
+                          </button>
+                      
+                      </form>
 
                     </div>
 
