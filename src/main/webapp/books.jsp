@@ -91,6 +91,26 @@
         </button>
 
     </form>
+    <%
+    String success = request.getParameter("success");
+    String error = request.getParameter("error");
+%>
+
+<% if (success != null) { %>
+
+    <div class="message success-message">
+        <%= success %>
+    </div>
+
+<% } %>
+
+<% if (error != null) { %>
+
+    <div class="message error-message">
+        <%= error %>
+    </div>
+
+<% } %>
 
 
     <div class="books-count">
@@ -152,12 +172,20 @@
 
                     <% if (book.getAvailableCopies() > 0) { %>
 
-                        <button class="borrow-button"
-                                type="button">
-                            Borrow
-                        </button>
-
-                    <% } else { %>
+                      <form action="borrow" method="post">
+                  
+                          <input type="hidden"
+                                 name="bookId"
+                                 value="<%= book.getId() %>">
+                  
+                          <button class="borrow-button"
+                                  type="submit">
+                              Borrow
+                          </button>
+                  
+                      </form>
+                  
+                  <% } else { %>
 
                         <button class="borrow-button disabled"
                                 type="button"
