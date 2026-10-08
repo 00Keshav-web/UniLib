@@ -97,10 +97,10 @@
 
     <div class="dashboard-grid">
 
-        <div class="dashboard-option">
-            <h3>📚 Browse Books</h3>
-            <p>Search and explore available books.</p>
-        </div>
+        <a href="books" class="dashboard-option dashboard-link">
+    <h3>📚 Browse Books</h3>
+    <p>Search and explore available books.</p>
+</a>
 
         <div class="dashboard-option">
             <h3>📖 My Borrowed Books</h3>

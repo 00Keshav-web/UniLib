@@ -996,3 +996,13 @@ a {
   }
 
 }
+
+.dashboard-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dashboard-link:hover {
+  color: inherit;
+}
