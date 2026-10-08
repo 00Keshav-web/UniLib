@@ -118,8 +118,10 @@
         </div>
 
         <div class="dashboard-option">
-            <h3>🔔 Notifications</h3>
-            <p>Check due dates and library updates.</p>
+            <a href="notifications" class="dashboard-option">
+    <h3>Notifications</h3>
+    <p>View your latest notifications.</p>
+</a>
         </div>
 
     </div>

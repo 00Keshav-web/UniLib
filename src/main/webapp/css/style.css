@@ -1126,3 +1126,91 @@ a.dashboard-option p {
     background: #fee2e2;
     color: #b91c1c;
 }
+
+/* ============================= */
+/* Notifications Page            */
+/* ============================= */
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.notification-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.notification-card.unread {
+    border-left: 4px solid #2563eb;
+}
+
+.notification-card.read {
+    opacity: 0.8;
+}
+
+.notification-content h3 {
+    margin: 0 0 8px;
+    color: #172b4d;
+}
+
+.notification-content p {
+    margin: 0 0 10px;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.notification-content small {
+    color: #9ca3af;
+}
+
+.notification-type {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.empty-state {
+    margin-top: 30px;
+    padding: 50px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.empty-state h2 {
+    margin-bottom: 10px;
+    color: #172b4d;
+}
+
+.empty-state p {
+    color: #6b7280;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #172b4d;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    background: #0f1f38;
+}
