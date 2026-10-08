@@ -1,0 +1,14 @@
+# Maven
+target/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Local environment / secrets
+.env
+application-local.properties
