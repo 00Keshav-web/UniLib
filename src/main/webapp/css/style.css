@@ -1006,3 +1006,22 @@ a {
 .dashboard-link:hover {
   color: inherit;
 }
+
+/* Dashboard clickable cards */
+a.dashboard-option {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+a.dashboard-option:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.dashboard-option h3,
+a.dashboard-option p {
+  color: inherit;
+}
