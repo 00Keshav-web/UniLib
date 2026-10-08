@@ -581,3 +581,183 @@ a {
     text-decoration: none;
     font-weight: 600;
 }
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-header {
+  height: 64px;
+  background: white;
+  border-bottom: 1px solid #e6e8eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7%;
+}
+
+.dashboard-logo {
+  font-size: 21px;
+  font-weight: 700;
+  color: #172b4d;
+}
+
+.dashboard-header span {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.dashboard-header strong {
+  color: #24466f;
+}
+
+.dashboard-header a {
+  color: #24466f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dashboard-header a:hover {
+  color: #193655;
+}
+
+.dashboard-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 25px;
+}
+
+.welcome-card {
+  background: #24466f;
+  color: white;
+
+  padding: 35px;
+  border-radius: 16px;
+
+  margin-bottom: 25px;
+}
+
+.welcome-card h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.welcome-card p {
+  color: #e1e8f0;
+  font-size: 15px;
+}
+
+.profile-card {
+  background: white;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 14px;
+
+  padding: 25px;
+
+  margin-bottom: 25px;
+
+  box-shadow: 0 2px 7px rgba(20, 40, 70, 0.04);
+}
+
+.profile-card h2 {
+  color: #24466f;
+  margin-bottom: 18px;
+  font-size: 21px;
+}
+
+.profile-card p {
+  color: #4b5563;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.profile-card strong {
+  color: #172b4d;
+}
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.dashboard-option {
+  background: white;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 14px;
+
+  padding: 25px;
+
+  min-height: 150px;
+
+  box-shadow: 0 2px 7px rgba(20, 40, 70, 0.04);
+
+  transition: 0.2s;
+}
+
+.dashboard-option:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 7px 20px rgba(20, 40, 70, 0.08);
+}
+
+.dashboard-option h3 {
+  color: #172b4d;
+
+  font-size: 16px;
+
+  margin-bottom: 10px;
+}
+
+.dashboard-option p {
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* Dashboard Responsive */
+
+@media (max-width: 900px) {
+
+  .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .dashboard-header {
+      padding: 0 20px;
+  }
+
+  .dashboard-header span {
+      display: none;
+  }
+
+  .dashboard-container {
+      padding: 25px 15px;
+  }
+
+  .welcome-card {
+      padding: 25px;
+  }
+
+  .welcome-card h1 {
+      font-size: 26px;
+  }
+
+  .dashboard-grid {
+      grid-template-columns: 1fr;
+  }
+
+}
