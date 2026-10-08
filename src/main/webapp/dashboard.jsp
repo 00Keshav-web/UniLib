@@ -105,7 +105,7 @@
         <div class="dashboard-option">
             <a href="my-books" class="dashboard-option">
                 <h3>📖 My Borrowed Books</h3>
-            <p>View books currently borrowed.</p>
+                <p>View books currently borrowed.</p>
             </a>
         </div>
 
