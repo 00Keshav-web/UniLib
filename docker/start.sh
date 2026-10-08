@@ -57,11 +57,22 @@ else
     echo "Database already contains tables. Skipping import."
 fi
 
-# Configure Tomcat to use Render's port
-echo "Configuring Tomcat port: ${PORT}"
+# Configure Tomcat for Render
+echo "Configuring Tomcat for Render port: ${PORT}"
 
+# Disable Tomcat shutdown port
+sed -i 's/<Server port="[^"]*"/<Server port="-1"/' \
+    "${CATALINA_HOME}/conf/server.xml"
+
+# Configure HTTP connector
 sed -i "s/port=\"8080\"/port=\"${PORT}\"/" \
     "${CATALINA_HOME}/conf/server.xml"
+
+# Make sure Tomcat accepts external connections
+sed -i "s/<Connector port=\"${PORT}\"/<Connector address=\"0.0.0.0\" port=\"${PORT}\"/" \
+    "${CATALINA_HOME}/conf/server.xml"
+
+echo "Tomcat configured on 0.0.0.0:${PORT}"
 
 echo "Starting Tomcat..."
 
