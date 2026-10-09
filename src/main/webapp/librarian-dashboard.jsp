@@ -120,7 +120,7 @@
         <p>Next, we'll connect these options to real librarian functions.</p>
 
         <div class="dashboard-grid">
-            <a href="librarian-books.jsp" class="dashboard-option">
+            <a href="librarian/books" class="dashboard-option">
                 <h3>Manage Books</h3>
                 <p>Add, edit, and remove books from the catalogue.</p>
             </a>

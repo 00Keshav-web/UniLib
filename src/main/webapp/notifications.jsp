@@ -31,7 +31,7 @@
             <p>Stay updated with your library activity.</p>
         </div>
 
-        <a href="dashboard.jsp" class="back-button">
+        <a href="dashboard.jsp" class="back-button" style="color: white;">
             Back to Dashboard
         </a>
     </div>
