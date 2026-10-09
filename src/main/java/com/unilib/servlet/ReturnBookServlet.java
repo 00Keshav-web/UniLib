@@ -82,6 +82,7 @@ public class ReturnBookServlet extends HttpServlet {
                     """;
 
             int bookId;
+	    String bookTitle;
 
             try (PreparedStatement statement =
                          connection.prepareStatement(
@@ -104,6 +105,24 @@ public class ReturnBookServlet extends HttpServlet {
                     }
 
                     bookId = resultSet.getInt("book_id");
+		    String titleSql = "SELECT title FROM books WHERE id = ?";
+
+try (PreparedStatement titleStatement =
+             connection.prepareStatement(titleSql)) {
+
+    titleStatement.setInt(1, bookId);
+
+    try (ResultSet titleResult = titleStatement.executeQuery()) {
+        if (titleResult.next()) {
+            bookTitle = titleResult.getString("title");
+        } else {
+            connection.rollback();
+            response.sendRedirect(
+                    "my-books?error=Book+not+found");
+            return;
+        }
+    }
+}
                 }
             }
 
@@ -173,8 +192,30 @@ public class ReturnBookServlet extends HttpServlet {
                 }
             }
 
-            // Everything succeeded
-            connection.commit();
+            // Create a return confirmation notification
+String notificationSql = """
+        INSERT INTO notifications
+        (user_id, title, message, type, is_read)
+        VALUES (?, ?, ?, ?, 0)
+        """;
+
+try (PreparedStatement statement =
+             connection.prepareStatement(notificationSql)) {
+
+    statement.setInt(1, memberId);
+    statement.setString(2, "Book Returned Successfully");
+    statement.setString(
+            3,
+            "You returned \"" + bookTitle
+                    + "\" successfully. Thank you!"
+    );
+    statement.setString(4, "RETURN");
+
+    statement.executeUpdate();
+}
+
+// Everything succeeded
+connection.commit();
 
             response.sendRedirect(
                     "my-books?success=Book+returned+successfully");

@@ -120,6 +120,23 @@ public class BorrowBookServlet extends HttpServlet {
             LocalDate borrowDate = LocalDate.now();
             LocalDate dueDate = borrowDate.plusDays(14);
 
+// Get the book title for the notification
+String bookTitle = "";
+
+String bookTitleSql = "SELECT title FROM books WHERE id = ?";
+
+try (PreparedStatement statement =
+             connection.prepareStatement(bookTitleSql)) {
+
+    statement.setInt(1, bookId);
+
+    try (ResultSet resultSet = statement.executeQuery()) {
+        if (resultSet.next()) {
+            bookTitle = resultSet.getString("title");
+        }
+    }
+}
+
             // Create transaction record
             String insertTransactionSql = """
                     INSERT INTO transactions
@@ -163,6 +180,28 @@ public class BorrowBookServlet extends HttpServlet {
 
             // Everything succeeded
             connection.commit();
+
+		// Create a notification for the member
+String notificationSql = """
+        INSERT INTO notifications
+        (user_id, title, message, type, is_read)
+        VALUES (?, ?, ?, ?, 0)
+        """;
+
+try (PreparedStatement statement =
+             connection.prepareStatement(notificationSql)) {
+
+    statement.setInt(1, memberId);
+    statement.setString(2, "Book Borrowed Successfully");
+    statement.setString(
+            3,
+            "You borrowed \"" + bookTitle
+                    + "\". Please return it by " + dueDate + "."
+    );
+    statement.setString(4, "BORROW");
+
+    statement.executeUpdate();
+}
 
             response.sendRedirect(
                     "books?success=Book+borrowed+successfully");
