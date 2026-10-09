@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <%
     if (session.getAttribute("userId") == null) {
         response.sendRedirect("login.jsp");
@@ -10,7 +11,13 @@
     String email = (String) session.getAttribute("userEmail");
     String membershipId = (String) session.getAttribute("membershipId");
     String role = (String) session.getAttribute("role");
+
+    if ("LIBRARIAN".equals(role)) {
+        response.sendRedirect("librarian-dashboard.jsp");
+        return;
+    }
 %>
+
 
 <!DOCTYPE html>
 
@@ -97,10 +104,12 @@
 
     <div class="dashboard-grid">
 
-        <a href="books" class="dashboard-option dashboard-link">
-    <h3>📚 Browse Books</h3>
-    <p>Search and explore available books.</p>
-</a>
+        <div class="dashboard-option">
+            <a href="books" class="dashboard-option dashboard-link">
+                <h3>📚 Browse Books</h3>
+                <p>Search and explore available books.</p>
+            </a>
+        </div>
 
         <div class="dashboard-option">
             <a href="my-books" class="dashboard-option">
@@ -119,9 +128,9 @@
 
         <div class="dashboard-option">
             <a href="notifications" class="dashboard-option">
-    <h3>Notifications</h3>
-    <p>View your latest notifications.</p>
-</a>
+                <h3>Notifications</h3>
+                <p>View your latest notifications.</p>
+            </a>
         </div>
 
     </div>
