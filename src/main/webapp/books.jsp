@@ -68,7 +68,7 @@
     <div class="books-header">
 
         <div>
-            <h1>Browse Books 📚</h1>
+            <h1>Browse Books</h1>
 
             <p>
                 Search and explore books available in the library.
@@ -131,7 +131,7 @@
             <div class="book-card">
 
                 <div class="book-card-icon">
-                    📖
+                    
                 </div>
 
                 <div class="book-card-content">

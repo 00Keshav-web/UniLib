@@ -16,6 +16,8 @@
 
     List<Book> books =
         (List<Book>) request.getAttribute("books");
+String success = request.getParameter("success");
+String error = request.getParameter("error");
 %>
 
 <!DOCTYPE html>
@@ -94,7 +96,7 @@
 <header class="dashboard-header">
     <div class="dashboard-logo">UniLib | Manage Books</div>
     <div>
-        <a href="librarian-dashboard.jsp">Dashboard</a>
+        <a href="librarian-dashboard">Dashboard</a>
         &nbsp;&nbsp;
         <a href="logout">Logout</a>
     </div>
@@ -112,6 +114,56 @@
             ← Back to Dashboard
         </a>
     </div>
+
+
+<% if ("added".equals(success)) { %>
+    <div class="profile-card" style="color: #166534;">
+        Book added successfully!
+    </div>
+<% } %>
+
+<% if ("duplicate".equals(error)) { %>
+    <div class="profile-card" style="color: #b91c1c;">
+        This ISBN already exists. Please use a unique ISBN.
+    </div>
+<% } else if ("missing".equals(error)) { %>
+    <div class="profile-card" style="color: #b91c1c;">
+        Please fill in all required fields.
+    </div>
+<% } else if ("length".equals(error)) { %>
+    <div class="profile-card" style="color: #b91c1c;">
+        One or more fields exceed the permitted length.
+    </div>
+<% } else if ("copies".equals(error)) { %>
+    <div class="profile-card" style="color: #b91c1c;">
+        Enter a valid copy count between 1 and 10,000.
+    </div>
+<% } %>
+
+<div class="profile-card" style="margin-bottom: 24px;">
+    <h2>Add a New Book</h2>
+
+    <form action="add-book" method="post"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+
+        <input type="text" name="title" placeholder="Book Title"
+               maxlength="200" required>
+
+        <input type="text" name="author" placeholder="Author"
+               maxlength="150" required>
+
+        <input type="text" name="isbn" placeholder="ISBN"
+               maxlength="30" required>
+
+        <input type="text" name="genre" placeholder="Genre"
+               maxlength="100" required>
+
+        <input type="number" name="totalCopies"
+               placeholder="Total Copies" min="1" max="10000" required>
+
+        <button type="submit">Add Book</button>
+    </form>
+</div>
 
     <div class="catalogue-table-wrapper">
         <table class="catalogue-table">
