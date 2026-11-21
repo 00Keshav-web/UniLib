@@ -82,10 +82,10 @@
                 <p>View the catalogue and add new books.</p>
             </a>
 
-            <div class="dashboard-option" aria-disabled="true">
+            <a href="librarian/members" class="dashboard-option">
                 <h3>Manage Members</h3>
-                <p>Member management is planned for the next phase.</p>
-            </div>
+                <p>View registered members, search accounts, and inspect borrowing history.</p>
+            </a>
 
             <div class="dashboard-option" aria-disabled="true">
                 <h3>Manage Loans</h3>
