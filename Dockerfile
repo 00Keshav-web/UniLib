@@ -45,7 +45,7 @@ EOF
 ENV CATALINA_HOME=/opt/tomcat
 
 RUN curl -fsSL \
-    https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.26/bin/apache-tomcat-11.0.26.tar.gz \
+    https://archive.apache.org/dist/tomcat/tomcat-11/v11.0.26/bin/apache-tomcat-11.0.26.tar.gz \
     -o /tmp/tomcat.tar.gz && \
     mkdir -p /opt && \
     tar -xzf /tmp/tomcat.tar.gz -C /opt && \
