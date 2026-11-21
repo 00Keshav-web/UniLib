@@ -29,27 +29,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manage Loans | UniLib</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-.loan-container{max-width:1400px;margin:35px auto;padding:24px}
-.loan-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
-.loan-filters{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
-.loan-filters input,.loan-filters select{padding:12px;border:1px solid #d5dce5;border-radius:8px}
-.loan-filters input{flex:1;min-width:220px}
-.loan-filters button{padding:0 22px;background:#e0a91b;border:0;border-radius:8px;font-weight:700;cursor:pointer}
-.loan-table-wrap{overflow-x:auto;background:white;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
-.loan-table{width:100%;border-collapse:collapse;min-width:1150px}
-.loan-table th,.loan-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:middle}
-.loan-table th{background:#24466f;color:white}
-.loan-table form{margin:0}
-.return-button{padding:8px 11px;background:#24466f;color:white;border:0;border-radius:6px;cursor:pointer}
-.return-button:hover{background:#193655}
-.loan-status{font-size:12px;font-weight:700}
-.status-overdue{color:#b42318}.status-borrowed{color:#175cd3}.status-returned{color:#067647}
-.loan-notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
-.loan-notice.error{background:#fef2f2;color:#991b1b}
-.loan-empty{text-align:center;padding:35px;color:#6b7280}
-.loan-muted{color:#6b7280;font-size:13px}
-</style>
+
 </head>
 <body>
 <header class="dashboard-header">
