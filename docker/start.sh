@@ -74,6 +74,9 @@ sed -i "s/<Connector port=\"${PORT}\"/<Connector address=\"0.0.0.0\" port=\"${PO
 
 echo "Tomcat configured on 0.0.0.0:${PORT}"
 
+# Limit Java memory usage on Render's 512 MB instance
+export CATALINA_OPTS="-Xms64m -Xmx192m -XX:MaxMetaspaceSize=96m -XX:+UseSerialGC"
+
 echo "Starting Tomcat..."
 
 exec "${CATALINA_HOME}/bin/catalina.sh" run
