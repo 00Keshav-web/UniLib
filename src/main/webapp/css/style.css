@@ -1214,3 +1214,173 @@ a.dashboard-option p {
 .back-button:hover {
     background: #0f1f38;
 }
+
+/* Extracted from librarian-books.jsp */
+.catalogue-container{max-width:1400px;margin:35px auto;padding:24px}
+        .catalogue-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+        .catalogue-table-wrapper{overflow-x:auto;background:white;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+        .catalogue-table{width:100%;border-collapse:collapse;min-width:1050px}
+        .catalogue-table th,.catalogue-table td{padding:12px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:middle}
+        .catalogue-table th{background:#24466f;color:white}
+        .catalogue-table input{width:100%;min-width:90px;box-sizing:border-box;padding:8px}
+        .catalogue-table .id-cell{min-width:40px}
+        .row-actions{display:flex;gap:8px;align-items:center}
+        .row-actions button{padding:8px 12px;cursor:pointer}
+        .delete-button{background:#b91c1c;color:white;border:0;border-radius:5px}
+        .search-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+        .search-form input{min-width:240px;flex:1}
+        .notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
+        .notice.error{background:#fef2f2;color:#991b1b}
+        .empty-message{padding:30px;text-align:center;color:#6b7280}
+        .back-link{color:#24466f;font-weight:600;text-decoration:none}
+
+
+/* Extracted from librarian-members.jsp */
+.member-container{max-width:1200px;margin:35px auto;padding:24px}
+.member-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+.member-table-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+.member-table{width:100%;border-collapse:collapse;min-width:850px}
+.member-table th,.member-table td{padding:14px;text-align:left;border-bottom:1px solid #e5e7eb}
+.member-table th{background:#24466f;color:white}
+.member-search{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.member-search input{flex:1;min-width:220px;padding:12px;border:1px solid #d5dce5;border-radius:8px}
+.member-search button{padding:0 22px;background:#e0a91b;border:0;border-radius:8px;font-weight:700;cursor:pointer}
+.member-link{color:#24466f;font-weight:700}
+.member-muted{color:#6b7280;font-size:13px}
+.member-empty{text-align:center;padding:35px;color:#6b7280}
+.member-count{margin:14px 0;color:#6b7280}
+
+
+/* Extracted from librarian-member-detail.jsp */
+.detail-container{max-width:1100px;margin:35px auto;padding:24px}
+.detail-card{background:white;border:1px solid #e7e9ed;border-radius:14px;padding:25px;margin:20px 0}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.detail-label{display:block;color:#6b7280;font-size:12px;margin-bottom:5px}
+.detail-value{color:#172b4d;font-weight:600;overflow-wrap:anywhere}
+.history-wrap{overflow-x:auto;background:#fff;border-radius:12px}
+.history-table{width:100%;border-collapse:collapse;min-width:800px}
+.history-table th,.history-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb}
+.history-table th{background:#24466f;color:white}
+.status{font-size:12px;font-weight:700}
+.empty-history{text-align:center;padding:35px;color:#6b7280}
+
+
+/* Extracted from librarian-loans.jsp */
+.loan-container{max-width:1400px;margin:35px auto;padding:24px}
+.loan-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+.loan-filters{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.loan-filters input,.loan-filters select{padding:12px;border:1px solid #d5dce5;border-radius:8px}
+.loan-filters input{flex:1;min-width:220px}
+.loan-filters button{padding:0 22px;background:#e0a91b;border:0;border-radius:8px;font-weight:700;cursor:pointer}
+.loan-table-wrap{overflow-x:auto;background:white;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+.loan-table{width:100%;border-collapse:collapse;min-width:1150px}
+.loan-table th,.loan-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:middle}
+.loan-table th{background:#24466f;color:white}
+.loan-table form{margin:0}
+.return-button{padding:8px 11px;background:#24466f;color:white;border:0;border-radius:6px;cursor:pointer}
+.return-button:hover{background:#193655}
+.loan-status{font-size:12px;font-weight:700}
+.status-overdue{color:#b42318}.status-borrowed{color:#175cd3}.status-returned{color:#067647}
+.loan-notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
+.loan-notice.error{background:#fef2f2;color:#991b1b}
+.loan-empty{text-align:center;padding:35px;color:#6b7280}
+.loan-muted{color:#6b7280;font-size:13px}
+
+
+/* Extracted from librarian-fines.jsp */
+.fine-container{max-width:1400px;margin:35px auto;padding:24px}
+.fine-section{margin:25px 0}.fine-table-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+.fine-table{width:100%;border-collapse:collapse;min-width:900px}.fine-table th,.fine-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb}
+.fine-table th{background:#24466f;color:#fff}.fine-muted{font-size:13px;color:#6b7280}
+.fine-status{font-weight:700}.fine-paid{color:#067647}.fine-unpaid{color:#b42318}
+.fine-button{padding:8px 12px;background:#24466f;color:#fff;border:0;border-radius:6px;cursor:pointer}
+.fine-notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
+.fine-notice.error{background:#fef2f2;color:#991b1b}.fine-empty{text-align:center;padding:28px;color:#6b7280}
+
+/* =========================
+   SHARED FEEDBACK MESSAGES
+========================= */
+
+.message {
+  padding: 12px 16px;
+  margin: 14px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.success-message {
+  background: #ecfdf3;
+  color: #067647;
+  border: 1px solid #abefc6;
+}
+
+.error-message {
+  background: #fef3f2;
+  color: #b42318;
+  border: 1px solid #fecdca;
+}
+
+/* =========================
+   SHARED RESPONSIVE TABLES
+========================= */
+
+@media (max-width: 768px) {
+  .catalogue-container,
+  .member-container,
+  .detail-container,
+  .loan-container,
+  .fine-container {
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .notification-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .member-heading,
+  .loan-heading {
+    align-items: flex-start;
+  }
+
+  .member-search,
+  .loan-filters,
+  .search-form {
+    flex-direction: column;
+  }
+
+  .member-search input,
+  .loan-filters input,
+  .loan-filters select,
+  .search-form input,
+  .search-form select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .member-search button,
+  .loan-filters button,
+  .search-form button {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogue-container,
+  .member-container,
+  .detail-container,
+  .loan-container,
+  .fine-container {
+    padding: 12px;
+  }
+
+  .detail-card {
+    padding: 18px;
+  }
+
+  .notification-card {
+    padding: 16px;
+  }
+}
