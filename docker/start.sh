@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 set -e
@@ -9,53 +10,15 @@ echo "================================="
 # Render provides PORT automatically
 PORT=${PORT:-8080}
 
-echo "Starting MySQL..."
+# Validate external TiDB configuration
+: "${DB_HOST:?DB_HOST is missing}"
+: "${DB_PORT:?DB_PORT is missing}"
+: "${DB_NAME:?DB_NAME is missing}"
+: "${DB_USER:?DB_USER is missing}"
+: "${DB_PASSWORD:?DB_PASSWORD is missing}"
 
-# Start MySQL
-service mysql start
-
-echo "Waiting for MySQL..."
-
-until mysqladmin ping --silent; do
-    sleep 2
-done
-
-echo "MySQL is ready."
-
-# Default environment values
-DB_NAME=${DB_NAME:-unilib}
-DB_USER=${DB_USER:-unilib_app}
-DB_PASSWORD=${DB_PASSWORD:-unilib_demo_password}
-
-echo "Creating UniLib database and user..."
-
-mysql -u root <<SQL
-CREATE DATABASE IF NOT EXISTS ${DB_NAME};
-
-CREATE USER IF NOT EXISTS '${DB_USER}'@'%'
-IDENTIFIED BY '${DB_PASSWORD}';
-
-ALTER USER '${DB_USER}'@'%'
-IDENTIFIED BY '${DB_PASSWORD}';
-
-GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';
-
-FLUSH PRIVILEGES;
-SQL
-
-echo "Database setup complete."
-
-# Check whether tables already exist
-TABLE_COUNT=$(mysql -u root -N -s -e \
-    "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='${DB_NAME}';")
-
-if [ "$TABLE_COUNT" -eq 0 ]; then
-    echo "Importing UniLib database dump..."
-    mysql -u root "${DB_NAME}" < /app/database/unilib.sql
-    echo "Database dump imported successfully."
-else
-    echo "Database already contains tables. Skipping import."
-fi
+echo "Using external database: ${DB_HOST}"
+echo "Local MySQL startup and SQL import are disabled."
 
 # Configure Tomcat for Render
 echo "Configuring Tomcat for Render port: ${PORT}"
@@ -74,7 +37,7 @@ sed -i "s/<Connector port=\"${PORT}\"/<Connector address=\"0.0.0.0\" port=\"${PO
 
 echo "Tomcat configured on 0.0.0.0:${PORT}"
 
-# Limit Java memory usage on Render's 512 MB instance
+# Limit Java memory usage
 export CATALINA_OPTS="-Xms64m -Xmx192m -XX:MaxMetaspaceSize=96m -XX:+UseSerialGC"
 
 echo "Starting Tomcat..."
