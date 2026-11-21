@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @WebServlet("/librarian/return-loan")
 public class LibrarianReturnLoanServlet extends HttpServlet {
@@ -41,9 +42,10 @@ public class LibrarianReturnLoanServlet extends HttpServlet {
             try {
                 int bookId;
                 int memberId;
+                Date dueDate;
                 String bookTitle;
                 String findSql = """
-                        SELECT t.book_id, t.member_id, b.title
+                        SELECT t.book_id, t.member_id, t.due_date, b.title
                         FROM transactions t
                         JOIN books b ON b.id = t.book_id
                         WHERE t.id = ? AND t.status = 'BORROWED'
@@ -59,6 +61,7 @@ public class LibrarianReturnLoanServlet extends HttpServlet {
                         }
                         bookId = rs.getInt("book_id");
                         memberId = rs.getInt("member_id");
+                        dueDate = rs.getDate("due_date");
                         bookTitle = rs.getString("title");
                     }
                 }
@@ -73,6 +76,23 @@ public class LibrarianReturnLoanServlet extends HttpServlet {
                     statement.setInt(2, transactionId);
                     if (statement.executeUpdate() != 1) {
                         throw new SQLException("Loan status changed before return could be completed.");
+                    }
+                }
+
+                // Finalize a fine when the book is returned late.
+                long overdueDays = Math.max(0, ChronoUnit.DAYS.between(
+                        dueDate.toLocalDate(), LocalDate.now()));
+                if (overdueDays > 0) {
+                    String fineSql = """
+                            INSERT INTO fines (transaction_id, member_id, amount)
+                            VALUES (?, ?, ?)
+                            """;
+                    try (PreparedStatement fineStatement = connection.prepareStatement(fineSql)) {
+                        fineStatement.setInt(1, transactionId);
+                        fineStatement.setInt(2, memberId);
+                        fineStatement.setBigDecimal(3,
+                                java.math.BigDecimal.valueOf(overdueDays * 5L));
+                        fineStatement.executeUpdate();
                     }
                 }
 

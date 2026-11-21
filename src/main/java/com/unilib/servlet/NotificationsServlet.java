@@ -35,6 +35,7 @@ public class NotificationsServlet extends HttpServlet {
         int userId = (Integer) session.getAttribute("userId");
 
         List<Notification> notifications = new ArrayList<>();
+        int unreadCount = 0;
 
         String sql = """
                 SELECT id, title, message, type, is_read, created_at
@@ -64,6 +65,7 @@ public class NotificationsServlet extends HttpServlet {
                     );
 
                     notifications.add(notification);
+                    if (!notification.isRead()) unreadCount++;
                 }
             }
 
@@ -76,6 +78,7 @@ public class NotificationsServlet extends HttpServlet {
         }
 
         request.setAttribute("notifications", notifications);
+        request.setAttribute("unreadCount", unreadCount);
 
         request.getRequestDispatcher("notifications.jsp")
                 .forward(request, response);

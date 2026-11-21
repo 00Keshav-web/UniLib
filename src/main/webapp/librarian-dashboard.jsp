@@ -91,6 +91,11 @@
                 <h3>Manage Loans</h3>
                 <p>Review active, overdue and returned loans, and record book returns.</p>
             </a>
+
+            <a href="librarian/fines" class="dashboard-option">
+                <h3>Manage Fines</h3>
+                <p>Review accruing and finalized fines, and record received payments.</p>
+            </a>
         </div>
     </div>
 
