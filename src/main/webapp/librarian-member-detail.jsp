@@ -25,19 +25,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Member Details | UniLib</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-.detail-container{max-width:1100px;margin:35px auto;padding:24px}
-.detail-card{background:white;border:1px solid #e7e9ed;border-radius:14px;padding:25px;margin:20px 0}
-.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.detail-label{display:block;color:#6b7280;font-size:12px;margin-bottom:5px}
-.detail-value{color:#172b4d;font-weight:600;overflow-wrap:anywhere}
-.history-wrap{overflow-x:auto;background:#fff;border-radius:12px}
-.history-table{width:100%;border-collapse:collapse;min-width:800px}
-.history-table th,.history-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb}
-.history-table th{background:#24466f;color:white}
-.status{font-size:12px;font-weight:700}
-.empty-history{text-align:center;padding:35px;color:#6b7280}
-</style>
+
 </head>
 <body>
 <header class="dashboard-header">
