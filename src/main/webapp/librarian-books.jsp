@@ -34,25 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Books | UniLib</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .catalogue-container{max-width:1400px;margin:35px auto;padding:24px}
-        .catalogue-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
-        .catalogue-table-wrapper{overflow-x:auto;background:white;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
-        .catalogue-table{width:100%;border-collapse:collapse;min-width:1050px}
-        .catalogue-table th,.catalogue-table td{padding:12px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:middle}
-        .catalogue-table th{background:#24466f;color:white}
-        .catalogue-table input{width:100%;min-width:90px;box-sizing:border-box;padding:8px}
-        .catalogue-table .id-cell{min-width:40px}
-        .row-actions{display:flex;gap:8px;align-items:center}
-        .row-actions button{padding:8px 12px;cursor:pointer}
-        .delete-button{background:#b91c1c;color:white;border:0;border-radius:5px}
-        .search-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-        .search-form input{min-width:240px;flex:1}
-        .notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
-        .notice.error{background:#fef2f2;color:#991b1b}
-        .empty-message{padding:30px;text-align:center;color:#6b7280}
-        .back-link{color:#24466f;font-weight:600;text-decoration:none}
-    </style>
+    
 </head>
 <body>
 
