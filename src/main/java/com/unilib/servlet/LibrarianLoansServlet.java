@@ -62,11 +62,11 @@ public class LibrarianLoansServlet extends HttpServlet {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             String pattern = "%" + search + "%";
             statement.setString(1, search);
-            for (int i = 2; i <= 7; i++) statement.setString(i, pattern);
+            for (int i = 2; i <= 6; i++) statement.setString(i, pattern);
+            statement.setString(7, status);
             statement.setString(8, status);
             statement.setString(9, status);
             statement.setString(10, status);
-            statement.setString(11, status);
 
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
