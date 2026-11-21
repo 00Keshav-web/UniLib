@@ -12,6 +12,8 @@
             (List<Notification>) request.getAttribute("notifications");
 
     String error = (String) request.getAttribute("error");
+    Integer unreadCountValue = (Integer) request.getAttribute("unreadCount");
+    int unreadCount = unreadCountValue == null ? 0 : unreadCountValue;
 %>
 
 <!DOCTYPE html>
@@ -28,13 +30,20 @@
     <div class="dashboard-header">
         <div>
             <h1>Notifications</h1>
-            <p>Stay updated with your library activity.</p>
+            <p>Stay updated with your library activity. Unread: <strong><%= unreadCount %></strong></p>
         </div>
 
         <a href="dashboard.jsp" class="back-button" style="color: white;">
             Back to Dashboard
         </a>
     </div>
+
+    <% if (unreadCount > 0) { %>
+        <form method="post" action="notification-read" style="margin-bottom: 18px;">
+            <input type="hidden" name="notificationId" value="all">
+            <button type="submit" class="primary-button">Mark all as read</button>
+        </form>
+    <% } %>
 
     <% if (error != null) { %>
         <div class="error-message">
@@ -74,9 +83,17 @@
 
                     </div>
 
-                    <span class="notification-type">
-                        <%= notification.getType() %>
-                    </span>
+                    <div>
+                        <span class="notification-type">
+                            <%= notification.getType() %>
+                        </span>
+                        <% if (!notification.isRead()) { %>
+                            <form method="post" action="notification-read" style="margin-top: 10px;">
+                                <input type="hidden" name="notificationId" value="<%= notification.getId() %>">
+                                <button type="submit" class="secondary-button">Mark as read</button>
+                            </form>
+                        <% } %>
+                    </div>
 
                 </div>
 
