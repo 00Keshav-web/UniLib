@@ -1,3 +1,4 @@
+
 package com.unilib.database;
 
 import java.sql.Connection;
@@ -21,9 +22,13 @@ public class DatabaseConnection {
     private static final String PASSWORD =
             System.getenv().getOrDefault("DB_PASSWORD", "");
 
+    // Enable TLS automatically for external databases such as TiDB
+    private static final boolean USE_SSL =
+            !HOST.equals("127.0.0.1") && !HOST.equals("localhost");
+
     private static final String URL =
             "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE
-            + "?useSSL=false"
+            + "?sslMode=" + (USE_SSL ? "VERIFY_IDENTITY" : "DISABLED")
             + "&allowPublicKeyRetrieval=true"
             + "&serverTimezone=UTC";
 
