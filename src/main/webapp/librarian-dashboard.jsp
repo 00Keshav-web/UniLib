@@ -1,7 +1,4 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet" %>
-<%@ page import="com.unilib.database.DatabaseConnection" %>
 
 <%
     if (session.getAttribute("userId") == null) {
@@ -9,58 +6,20 @@
         return;
     }
 
-    String role = (String) session.getAttribute("role");
-
-    if (!"LIBRARIAN".equals(role)) {
-        response.sendRedirect("dashboard.jsp");
+    if (!"LIBRARIAN".equals(session.getAttribute("role"))) {
+        response.sendError(403, "Librarian access required.");
         return;
     }
 
-    int totalBooks = 0;
-    int totalMembers = 0;
-    int activeLoans = 0;
-    int overdueLoans = 0;
+    Integer totalBooks = (Integer) request.getAttribute("totalBooks");
+    Integer totalMembers = (Integer) request.getAttribute("totalMembers");
+    Integer activeLoans = (Integer) request.getAttribute("activeLoans");
+    Integer overdueLoans = (Integer) request.getAttribute("overdueLoans");
 
-    try (Connection connection = DatabaseConnection.getConnection()) {
-
-        String booksQuery = "SELECT COALESCE(SUM(total_copies), 0) FROM books";
-        try (PreparedStatement ps = connection.prepareStatement(booksQuery);
-             ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                totalBooks = rs.getInt(1);
-            }
-        }
-
-        String membersQuery =
-            "SELECT COUNT(*) FROM users WHERE role = 'MEMBER'";
-        try (PreparedStatement ps = connection.prepareStatement(membersQuery);
-             ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                totalMembers = rs.getInt(1);
-            }
-        }
-
-        String activeLoansQuery =
-            "SELECT COUNT(*) FROM transactions WHERE status = 'BORROWED'";
-        try (PreparedStatement ps = connection.prepareStatement(activeLoansQuery);
-             ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                activeLoans = rs.getInt(1);
-            }
-        }
-
-        String overdueLoansQuery =
-            "SELECT COUNT(*) FROM transactions " +
-            "WHERE status = 'BORROWED' AND due_date < CURDATE()";
-        try (PreparedStatement ps = connection.prepareStatement(overdueLoansQuery);
-             ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                overdueLoans = rs.getInt(1);
-            }
-        }
-
-    } catch (Exception e) {
-        application.log("Unable to load librarian dashboard statistics", e);
+    if (totalBooks == null || totalMembers == null ||
+            activeLoans == null || overdueLoans == null) {
+        response.sendRedirect("librarian-dashboard");
+        return;
     }
 %>
 
@@ -92,7 +51,6 @@
     </div>
 
     <div class="dashboard-grid">
-
         <div class="dashboard-option">
             <h3>Total Book Copies</h3>
             <p><%= totalBooks %></p>
@@ -112,28 +70,27 @@
             <h3>Overdue Loans</h3>
             <p><%= overdueLoans %></p>
         </div>
-
     </div>
 
     <div class="profile-card">
         <h2>Library Management</h2>
-        <p>Next, we'll connect these options to real librarian functions.</p>
+        <p>Choose a management area to continue.</p>
 
         <div class="dashboard-grid">
             <a href="librarian/books" class="dashboard-option">
                 <h3>Manage Books</h3>
-                <p>Add, edit, and remove books from the catalogue.</p>
+                <p>View the catalogue and add new books.</p>
             </a>
 
-            <a href="librarian-members.jsp" class="dashboard-option">
+            <div class="dashboard-option" aria-disabled="true">
                 <h3>Manage Members</h3>
-                <p>View registered library members.</p>
-            </a>
+                <p>Member management is planned for the next phase.</p>
+            </div>
 
-            <a href="librarian-loans.jsp" class="dashboard-option">
+            <div class="dashboard-option" aria-disabled="true">
                 <h3>Manage Loans</h3>
-                <p>Review borrowed, returned, and overdue books.</p>
-            </a>
+                <p>Loan management is planned for a later phase.</p>
+            </div>
         </div>
     </div>
 
