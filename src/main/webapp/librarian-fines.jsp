@@ -25,16 +25,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fine Management | UniLib</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-.fine-container{max-width:1400px;margin:35px auto;padding:24px}
-.fine-section{margin:25px 0}.fine-table-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
-.fine-table{width:100%;border-collapse:collapse;min-width:900px}.fine-table th,.fine-table td{padding:13px;text-align:left;border-bottom:1px solid #e5e7eb}
-.fine-table th{background:#24466f;color:#fff}.fine-muted{font-size:13px;color:#6b7280}
-.fine-status{font-weight:700}.fine-paid{color:#067647}.fine-unpaid{color:#b42318}
-.fine-button{padding:8px 12px;background:#24466f;color:#fff;border:0;border-radius:6px;cursor:pointer}
-.fine-notice{padding:12px 16px;margin:12px 0;border-radius:8px;background:#f0fdf4;color:#166534}
-.fine-notice.error{background:#fef2f2;color:#991b1b}.fine-empty{text-align:center;padding:28px;color:#6b7280}
-</style>
+
 </head>
 <body>
 <header class="dashboard-header">
