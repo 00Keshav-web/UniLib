@@ -27,21 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manage Members | UniLib</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-.member-container{max-width:1200px;margin:35px auto;padding:24px}
-.member-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
-.member-table-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06)}
-.member-table{width:100%;border-collapse:collapse;min-width:850px}
-.member-table th,.member-table td{padding:14px;text-align:left;border-bottom:1px solid #e5e7eb}
-.member-table th{background:#24466f;color:white}
-.member-search{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
-.member-search input{flex:1;min-width:220px;padding:12px;border:1px solid #d5dce5;border-radius:8px}
-.member-search button{padding:0 22px;background:#e0a91b;border:0;border-radius:8px;font-weight:700;cursor:pointer}
-.member-link{color:#24466f;font-weight:700}
-.member-muted{color:#6b7280;font-size:13px}
-.member-empty{text-align:center;padding:35px;color:#6b7280}
-.member-count{margin:14px 0;color:#6b7280}
-</style>
+
 </head>
 <body>
 <header class="dashboard-header">
