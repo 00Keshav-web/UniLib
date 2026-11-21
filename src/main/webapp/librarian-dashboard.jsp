@@ -87,10 +87,10 @@
                 <p>View registered members, search accounts, and inspect borrowing history.</p>
             </a>
 
-            <div class="dashboard-option" aria-disabled="true">
+            <a href="librarian/loans" class="dashboard-option">
                 <h3>Manage Loans</h3>
-                <p>Loan management is planned for a later phase.</p>
-            </div>
+                <p>Review active, overdue and returned loans, and record book returns.</p>
+            </a>
         </div>
     </div>
 
