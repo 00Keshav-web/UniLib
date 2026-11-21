@@ -13,7 +13,7 @@
     String role = (String) session.getAttribute("role");
 
     if ("LIBRARIAN".equals(role)) {
-        response.sendRedirect("librarian-dashboard.jsp");
+        response.sendRedirect("librarian-dashboard");
         return;
     }
 %>
@@ -123,7 +123,7 @@
                 <h3> Borrowing History</h3>
                 <p>View your previous transactions.</p>
             </a>
-            
+
         </div>
 
         <div class="dashboard-option">
