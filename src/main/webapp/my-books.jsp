@@ -3,7 +3,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
 
@@ -11,7 +11,7 @@
             (List<BorrowedBook>) request.getAttribute("borrowedBooks");
 
     if (borrowedBooks == null) {
-        response.sendRedirect("my-books");
+        response.sendRedirect(request.getContextPath() + "/my-books");
         return;
     }
 
@@ -31,7 +31,7 @@
 
     <title>My Borrowed Books | UniLib</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 
@@ -54,11 +54,11 @@
 
         &nbsp;&nbsp;
 
-        <a href="dashboard.jsp">Dashboard</a>
+        <a href="<%= request.getContextPath() %>/dashboard.jsp">Dashboard</a>
 
         &nbsp;&nbsp;
 
-        <a href="logout">Logout</a>
+        <a href="<%= request.getContextPath() %>/logout">Logout</a>
 
     </div>
 
@@ -123,7 +123,7 @@
 
             <br>
 
-            <a href="books">
+            <a href="<%= request.getContextPath() %>/books">
                 Browse Books
             </a>
 
@@ -175,7 +175,7 @@
                         </div>
 
 
-                        <form action="return-book" method="post">
+                        <form action="<%= request.getContextPath() %>/return-book" method="post">
 
                           <input type="hidden"
                                  name="transactionId"
