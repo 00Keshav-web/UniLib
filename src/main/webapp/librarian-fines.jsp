@@ -11,7 +11,7 @@
     }
 %>
 <%
-    if (session.getAttribute("userId") == null) { response.sendRedirect("login.jsp"); return; }
+    if (session.getAttribute("userId") == null) { response.sendRedirect(request.getContextPath() + "/login.jsp"); return; }
     if (!"LIBRARIAN".equals(session.getAttribute("role"))) { response.sendError(403, "Librarian access required."); return; }
     List<Fine> fines = (List<Fine>) request.getAttribute("fines");
     List<AccruingFine> accruing = (List<AccruingFine>) request.getAttribute("accruingFines");
@@ -24,18 +24,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fine Management | UniLib</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 <body>
 <header class="dashboard-header">
  <div class="dashboard-logo">UniLib | Fine Management</div>
- <div><a href="librarian-dashboard">Dashboard</a>&nbsp;&nbsp;<a href="logout">Logout</a></div>
+ <div><a href="<%= request.getContextPath() %>/librarian-dashboard">Dashboard</a>&nbsp;&nbsp;<a href="<%= request.getContextPath() %>/logout">Logout</a></div>
 </header>
 <main class="fine-container">
  <h1>Fine Management</h1>
  <p class="fine-muted">Late fee: ₹5 per day after the due date. No grace period or maximum cap.</p>
- <a href="librarian-dashboard" style="color:#24466f;font-weight:600">← Back to Dashboard</a>
+ <a href="<%= request.getContextPath() %>/librarian-dashboard" style="color:#24466f;font-weight:600">← Back to Dashboard</a>
  <% if ("paid".equals(success)) { %><div class="fine-notice">Payment recorded successfully.</div><% } %>
  <% if ("invalid".equals(error)) { %><div class="fine-notice error">Invalid fine record.</div>
  <% } else if ("already".equals(error)) { %><div class="fine-notice error">This fine is already paid or could not be found.</div><% } %>
@@ -67,7 +67,7 @@
      <td><%= h(fine.getCreatedAt()) %></td><td><%= h(fine.getPaidAt()) %></td><td><%= h(fine.getRecordedBy()) %></td>
      <td>
       <% if ("UNPAID".equals(fine.getStatus())) { %>
-       <form method="post" action="record-fine-payment" onsubmit="return confirm('Confirm that this fine payment has been received?');">
+       <form method="post" action="<%= request.getContextPath() %>/record-fine-payment" onsubmit="return confirm('Confirm that this fine payment has been received?');">
         <input type="hidden" name="fineId" value="<%= fine.getId() %>">
         <button class="fine-button" type="submit">Record Payment</button>
        </form>
