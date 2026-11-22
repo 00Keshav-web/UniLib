@@ -12,7 +12,7 @@
 
     <title>Login | UniLib</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 
@@ -42,7 +42,7 @@
 
         <% } %>
 
-        <form action="login" method="post">
+        <form action="<%= request.getContextPath() %>/login" method="post">
 
             <div class="form-group">
 
@@ -86,7 +86,7 @@
 
         <div class="auth-footer">
 
-            <a href="index.jsp">
+            <a href="<%= request.getContextPath() %>/index.jsp">
                 ← Back to Home
             </a>
 
