@@ -4,7 +4,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
 
@@ -20,7 +20,7 @@
 <html>
 <head>
     <title>Notifications - UniLib</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 
 <body>
@@ -33,13 +33,13 @@
             <p>Stay updated with your library activity. Unread: <strong><%= unreadCount %></strong></p>
         </div>
 
-        <a href="dashboard.jsp" class="back-button" style="color: white;">
+        <a href="<%= request.getContextPath() %>/dashboard.jsp" class="back-button" style="color: white;">
             Back to Dashboard
         </a>
     </div>
 
     <% if (unreadCount > 0) { %>
-        <form method="post" action="notification-read" style="margin-bottom: 18px;">
+        <form method="post" action="<%= request.getContextPath() %>/notification-read" style="margin-bottom: 18px;">
             <input type="hidden" name="notificationId" value="all">
             <button type="submit" class="primary-button">Mark all as read</button>
         </form>
@@ -88,7 +88,7 @@
                             <%= notification.getType() %>
                         </span>
                         <% if (!notification.isRead()) { %>
-                            <form method="post" action="notification-read" style="margin-top: 10px;">
+                            <form method="post" action="<%= request.getContextPath() %>/notification-read" style="margin-top: 10px;">
                                 <input type="hidden" name="notificationId" value="<%= notification.getId() %>">
                                 <button type="submit" class="secondary-button">Mark as read</button>
                             </form>
