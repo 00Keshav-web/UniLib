@@ -3,7 +3,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
 
@@ -13,7 +13,7 @@
     String role = (String) session.getAttribute("role");
 
     if ("LIBRARIAN".equals(role)) {
-        response.sendRedirect("librarian-dashboard");
+        response.sendRedirect(request.getContextPath() + "/librarian-dashboard");
         return;
     }
 %>
@@ -32,7 +32,7 @@
 
     <title>Dashboard | UniLib</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 
@@ -52,7 +52,7 @@
 
         &nbsp;&nbsp;
 
-        <a href="logout">Logout</a>
+        <a href="<%= request.getContextPath() %>/logout">Logout</a>
 
     </div>
 
@@ -105,21 +105,21 @@
     <div class="dashboard-grid">
 
         <div class="dashboard-option">
-            <a href="books" class="dashboard-option dashboard-link">
+            <a href="<%= request.getContextPath() %>/books" class="dashboard-option dashboard-link">
                 <h3>📚 Browse Books</h3>
                 <p>Search and explore available books.</p>
             </a>
         </div>
 
         <div class="dashboard-option">
-            <a href="my-books" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/my-books" class="dashboard-option">
                 <h3> My Borrowed Books</h3>
                 <p>View books currently borrowed.</p>
             </a>
         </div>
 
         <div class="dashboard-option">
-            <a href="history" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/history" class="dashboard-option">
                 <h3> Borrowing History</h3>
                 <p>View your previous transactions.</p>
             </a>
@@ -127,7 +127,7 @@
         </div>
 
         <div class="dashboard-option">
-            <a href="notifications" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/notifications" class="dashboard-option">
                 <h3>Notifications</h3>
                 <p>View your latest notifications.</p>
             </a>
