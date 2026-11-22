@@ -11,7 +11,7 @@
 %>
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp"); return;
+        response.sendRedirect(request.getContextPath() + "/login.jsp"); return;
     }
     if (!"LIBRARIAN".equals(session.getAttribute("role"))) {
         response.sendError(403, "Librarian access required."); return;
@@ -28,23 +28,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manage Loans | UniLib</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 <body>
 <header class="dashboard-header">
  <div class="dashboard-logo">UniLib | Manage Loans</div>
- <div><a href="librarian-dashboard">Dashboard</a>&nbsp;&nbsp;<a href="logout">Logout</a></div>
+ <div><a href="<%= request.getContextPath() %>/librarian-dashboard">Dashboard</a>&nbsp;&nbsp;<a href="<%= request.getContextPath() %>/logout">Logout</a></div>
 </header>
 <main class="loan-container">
  <div class="loan-heading">
   <div><h1>Loan Management</h1><p class="loan-muted">Review borrowing transactions and process book returns.</p></div>
-  <a href="librarian-dashboard" style="color:#24466f;font-weight:600">← Back to Dashboard</a>
+  <a href="<%= request.getContextPath() %>/librarian-dashboard" style="color:#24466f;font-weight:600">← Back to Dashboard</a>
  </div>
  <% if ("returned".equals(success)) { %><div class="loan-notice">Book return recorded successfully and member notified.</div><% } %>
  <% if ("invalid".equals(error)) { %><div class="loan-notice error">Invalid transaction ID.</div>
  <% } else if ("notactive".equals(error)) { %><div class="loan-notice error">This loan is no longer active or could not be found.</div><% } %>
- <form class="loan-filters" action="loans" method="get">
+ <form class="loan-filters" action="<%= request.getContextPath() %>/loans" method="get">
   <input type="search" name="search" placeholder="Search member, membership ID, book or transaction ID" value="<%= h(search) %>">
   <select name="status">
    <option value="ALL" <%= "ALL".equals(selectedStatus) ? "selected" : "" %>>All statuses</option>
@@ -53,7 +53,7 @@
    <option value="RETURNED" <%= "RETURNED".equals(selectedStatus) ? "selected" : "" %>>Returned</option>
   </select>
   <button type="submit">Filter</button>
-  <a href="loans" style="align-self:center;color:#24466f;font-weight:600">Clear</a>
+  <a href="<%= request.getContextPath() %>/loans" style="align-self:center;color:#24466f;font-weight:600">Clear</a>
  </form>
  <p class="loan-muted" style="margin:12px 0">Transactions found: <strong><%= loans == null ? 0 : loans.size() %></strong></p>
  <div class="loan-table-wrap">
@@ -75,7 +75,7 @@
     <td class="loan-status <%= statusClass %>"><%= h(loan.getStatus()) %></td>
     <td>
      <% if (!"RETURNED".equals(loan.getStatus())) { %>
-      <form action="return-loan" method="post" onsubmit="return confirm('Confirm that this book has been returned?');">
+      <form action="<%= request.getContextPath() %>/return-loan" method="post" onsubmit="return confirm('Confirm that this book has been returned?');">
        <input type="hidden" name="transactionId" value="<%= loan.getId() %>">
        <button class="return-button" type="submit">Record Return</button>
       </form>
