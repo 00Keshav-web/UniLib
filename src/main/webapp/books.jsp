@@ -3,7 +3,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
 
@@ -14,7 +14,7 @@
             (String) request.getAttribute("search");
 
     if (books == null) {
-        response.sendRedirect("books");
+        response.sendRedirect(request.getContextPath() + "/books");
         return;
     }
 %>
@@ -31,7 +31,7 @@
 
     <title>Browse Books | UniLib</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 
@@ -53,11 +53,11 @@
 
         &nbsp;&nbsp;
 
-        <a href="dashboard.jsp">Dashboard</a>
+        <a href="<%= request.getContextPath() %>/dashboard.jsp">Dashboard</a>
 
         &nbsp;&nbsp;
 
-        <a href="logout">Logout</a>
+        <a href="<%= request.getContextPath() %>/logout">Logout</a>
     </div>
 
 </header>
@@ -78,7 +78,7 @@
     </div>
 
 
-    <form action="books" method="get" class="book-search">
+    <form action="<%= request.getContextPath() %>/books" method="get" class="book-search">
 
         <input
             type="text"
@@ -172,7 +172,7 @@
 
                     <% if (book.getAvailableCopies() > 0) { %>
 
-                      <form action="borrow" method="post">
+                      <form action="<%= request.getContextPath() %>/borrow" method="post">
                   
                           <input type="hidden"
                                  name="bookId"
