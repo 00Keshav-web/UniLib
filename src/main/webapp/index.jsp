@@ -6,7 +6,7 @@
 
     <title>UniLib | Online Library</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 
     <nav class="nav-links">
 
-        <a href="index.jsp" class="active">Home</a>
+        <a href="<%= request.getContextPath() %>/index.jsp" class="active">Home</a>
 
         <a href="#">Books</a>
 
@@ -37,11 +37,11 @@
 
     <div class="nav-actions">
 
-        <a href="login.jsp" class="login-link">
+        <a href="<%= request.getContextPath() %>/login.jsp" class="login-link">
             Login
         </a>
 
-        <a href="register.jsp" class="register-button">
+        <a href="<%= request.getContextPath() %>/register.jsp" class="register-button">
             Register
         </a>
 
@@ -76,7 +76,7 @@
                 Explore Books
             </a>
 
-            <a href="login.jsp" class="secondary-button">
+            <a href="<%= request.getContextPath() %>/login.jsp" class="secondary-button">
                 Login
             </a>
 

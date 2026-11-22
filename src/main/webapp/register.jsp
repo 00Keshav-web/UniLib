@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Register - UniLib</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
             </div>
         <% } %>
 
-        <form action="register" method="post">
+        <form action="<%= request.getContextPath() %>/register" method="post">
 
             <label for="name">Full Name</label>
             <input
@@ -70,7 +70,7 @@
 
         <p class="register-link">
             Already have an account?
-            <a href="login.jsp">Login</a>
+            <a href="<%= request.getContextPath() %>/login.jsp">Login</a>
         </p>
 
     </div>

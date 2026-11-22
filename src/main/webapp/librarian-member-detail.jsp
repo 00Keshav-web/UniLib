@@ -11,7 +11,7 @@
 %>
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp"); return;
+        response.sendRedirect(request.getContextPath() + "/login.jsp"); return;
     }
     if (!"LIBRARIAN".equals(session.getAttribute("role"))) {
         response.sendError(403, "Librarian access required."); return;
@@ -24,16 +24,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Member Details | UniLib</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 
 </head>
 <body>
 <header class="dashboard-header">
  <div class="dashboard-logo">UniLib | Member Details</div>
- <div><a href="members">All Members</a>&nbsp;&nbsp;<a href="logout">Logout</a></div>
+ <div><a href="<%= request.getContextPath() %>/members">All Members</a>&nbsp;&nbsp;<a href="<%= request.getContextPath() %>/logout">Logout</a></div>
 </header>
 <main class="detail-container">
- <a href="members" style="color:#24466f;font-weight:600">← Back to Members</a>
+ <a href="<%= request.getContextPath() %>/members" style="color:#24466f;font-weight:600">← Back to Members</a>
  <h1 style="margin-top:18px">Member Profile</h1>
  <section class="detail-card">
   <div class="detail-grid">
