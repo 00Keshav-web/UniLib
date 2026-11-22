@@ -2,7 +2,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
 
@@ -18,7 +18,7 @@
 
     if (totalBooks == null || totalMembers == null ||
             activeLoans == null || overdueLoans == null) {
-        response.sendRedirect("librarian-dashboard");
+        response.sendRedirect(request.getContextPath() + "/librarian-dashboard");
         return;
     }
 %>
@@ -29,7 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Librarian Dashboard | UniLib</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
     <div>
         Welcome, <strong><%= session.getAttribute("userName") %></strong>
         &nbsp;&nbsp;
-        <a href="logout">Logout</a>
+        <a href="<%= request.getContextPath() %>/logout">Logout</a>
     </div>
 </header>
 
@@ -77,22 +77,22 @@
         <p>Choose a management area to continue.</p>
 
         <div class="dashboard-grid">
-            <a href="librarian/books" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/librarian/books" class="dashboard-option">
                 <h3>Manage Books</h3>
                 <p>View the catalogue and add new books.</p>
             </a>
 
-            <a href="librarian/members" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/librarian/members" class="dashboard-option">
                 <h3>Manage Members</h3>
                 <p>View registered members, search accounts, and inspect borrowing history.</p>
             </a>
 
-            <a href="librarian/loans" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/librarian/loans" class="dashboard-option">
                 <h3>Manage Loans</h3>
                 <p>Review active, overdue and returned loans, and record book returns.</p>
             </a>
 
-            <a href="librarian/fines" class="dashboard-option">
+            <a href="<%= request.getContextPath() %>/librarian/fines" class="dashboard-option">
                 <h3>Manage Fines</h3>
                 <p>Review accruing and finalized fines, and record received payments.</p>
             </a>
