@@ -13,7 +13,7 @@
 
 <%
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
     if (!"LIBRARIAN".equals(session.getAttribute("role"))) {
@@ -33,7 +33,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Books | UniLib</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     
 </head>
 <body>
@@ -41,9 +41,9 @@
 <header class="dashboard-header">
     <div class="dashboard-logo">UniLib | Manage Books</div>
     <div>
-        <a href="librarian-dashboard">Dashboard</a>
+        <a href="<%= request.getContextPath() %>/librarian-dashboard">Dashboard</a>
         &nbsp;&nbsp;
-        <a href="logout">Logout</a>
+        <a href="<%= request.getContextPath() %>/logout">Logout</a>
     </div>
 </header>
 
@@ -53,7 +53,7 @@
             <h1>Book Catalogue</h1>
             <p>Search, add, edit and manage books in your library.</p>
         </div>
-        <a href="librarian-dashboard" class="back-link">← Back to Dashboard</a>
+        <a href="<%= request.getContextPath() %>/librarian-dashboard" class="back-link">← Back to Dashboard</a>
     </div>
 
     <% if ("added".equals(success)) { %><div class="notice">Book added successfully.</div><% } %>
@@ -70,7 +70,7 @@
 
     <section class="profile-card" style="margin-bottom:24px">
         <h2>Add a New Book</h2>
-        <form action="add-book" method="post"
+        <form action="<%= request.getContextPath() %>/add-book" method="post"
               style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
             <input type="text" name="title" placeholder="Book Title" maxlength="200" required>
             <input type="text" name="author" placeholder="Author" maxlength="150" required>
@@ -81,11 +81,11 @@
         </form>
     </section>
 
-    <form class="search-form" action="books" method="get">
+    <form class="search-form" action="<%= request.getContextPath() %>/books" method="get">
         <input type="search" name="search" placeholder="Search title, author, ISBN or genre"
                value="<%= h(search) %>">
         <button type="submit">Search</button>
-        <a href="books" class="back-link" style="align-self:center">Clear</a>
+        <a href="<%= request.getContextPath() %>/books" class="back-link" style="align-self:center">Clear</a>
     </form>
 
     <div class="catalogue-table-wrapper">
@@ -100,7 +100,7 @@
             <% if (books != null && !books.isEmpty()) {
                    for (Book book : books) { %>
                 <tr>
-                    <form id="edit-<%= book.getId() %>" action="edit-book" method="post"></form>
+                    <form id="edit-<%= book.getId() %>" action="<%= request.getContextPath() %>/edit-book" method="post"></form>
                     <td class="id-cell">
                         <%= book.getId() %>
                         <input type="hidden" form="edit-<%= book.getId() %>" name="id" value="<%= book.getId() %>">
@@ -115,7 +115,7 @@
                     <td>
                         <div class="row-actions">
                             <button type="submit" form="edit-<%= book.getId() %>">Save</button>
-                            <form action="delete-book" method="post"
+                            <form action="<%= request.getContextPath() %>/delete-book" method="post"
                                   onsubmit="return confirm('Delete this book? This is allowed only if it has no borrowing history.');">
                                 <input type="hidden" name="id" value="<%= book.getId() %>">
                                 <button type="submit" class="delete-button">Delete</button>
